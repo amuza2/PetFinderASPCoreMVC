@@ -286,3 +286,14 @@ button {
 		margin-top: 60px;
 	}
 }
+.footer {
+	display: flex;
+	font-size: 0.8em;
+	color: #5e5e5e;
+	gap: 15em;
+	padding-bottom: 4em;
+}
+
+.footer span {
+	cursor: pointer;
+}
