@@ -9,7 +9,8 @@
     <link rel="stylesheet" href="~/PetFinderASPCoreMVC.styles.css" asp-append-version="true" />
 </head>
 <body>
-    @if(!(ViewContext.RouteData.Values["controller"].ToString() == "Login" &&
+    @if(!(ViewContext.RouteData.Values["controller"].ToString() == "Login" ||
+    ViewContext.RouteData.Values["controller"].ToString() == "SignUp" &&
     ViewContext.RouteData.Values["action"].ToString() == "Index"))
     {
         <header>
