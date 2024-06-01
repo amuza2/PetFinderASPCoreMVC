@@ -392,10 +392,10 @@ body {
 }
 
 .products-area-wrapper {
-  width: 100%;
-  max-height: 100%;
-  overflow: auto;
-  padding: 0 4px;
+    width: 100%;
+    max-height: 500px;
+    overflow: auto;
+    padding: 0 4px;
 }
 
 .tableView .products-header {
