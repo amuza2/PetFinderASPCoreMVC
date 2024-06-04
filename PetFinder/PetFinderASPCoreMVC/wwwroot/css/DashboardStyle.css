@@ -444,7 +444,7 @@ body {
   }
 }
 @media screen and (max-width: 520px) {
-  .tableView .product-cell.category, .tableView .product-cell.sales {
+  .tableView .product-cell.category, .tableView .product-cell.author {
     display: none;
   }
   .tableView .product-cell.status-cell {
