@@ -10,4 +10,13 @@
     <None Include="wwwroot\Images\ilust.png" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Firebase.Auth" Version="1.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Views\Home\Index.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Home\Privacy.cshtml" />
+  </ItemGroup>
+
 </Project>
