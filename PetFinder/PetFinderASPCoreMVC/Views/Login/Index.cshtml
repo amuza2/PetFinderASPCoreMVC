@@ -1,48 +1,54 @@
-﻿<!DOCTYPE html>
+﻿@model PetFinderASPCoreMVC.Models.LoginModel
+
+
+<!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<title>Pet Finder - Login page</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <title>Pet Finder - Login page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	<!-- MATERIAL DESIGN ICONIC FONT -->
-	<link rel="stylesheet" href="./css/material-design-iconic-font.min.css">
-	<link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap'>
+    <!-- MATERIAL DESIGN ICONIC FONT -->
+    <link rel="stylesheet" href="./css/material-design-iconic-font.min.css">
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap'>
 
-	<!-- STYLE CSS -->
-	<link rel="stylesheet" href="./css/SignUpStyle.css">
+    <!-- STYLE CSS -->
+    <link rel="stylesheet" href="./css/SignUpStyle.css">
 </head>
 
 <body>
-	<div class="wrapper">
-		<div class="inner">
-			<div class="image-holder">
-				<img src="images/ilust.png" alt="cat">
-			</div>
-			<form action="">
-				<h3>Login Form</h3>
-				<div class="form-wrapper">
-					<input type="text" placeholder="Email Address" class="form-control">
-					<i class="zmdi zmdi-email"></i>
-				</div>
-				<div class="form-wrapper">
-					<input type="password" placeholder="Password" class="form-control">
-					<i class="zmdi zmdi-lock"></i>
-				</div>
-				<button>
-					Login
-					<i class="zmdi zmdi-arrow-right"></i>
-				</button>
-				<br />
-			<div class="footer">
-				
-				<span>
-					<a href="@Url.Action("Index", "SignUp")">Sign Up</a>
-				</span><span>Forgot Password?</span>
-			</div>
-			</form>
-		</div>
-	</div>
+<div class="wrapper">
+    <div class="inner">
+        <div class="image-holder">
+            <img src="images/ilust.png" alt="cat">
+        </div>
+        <form asp-action="SignInUser"  method="post">
+            <h3>Login Form</h3>
+            <div class="form-wrapper">
+                <input asp-for="EmailAddress" type="text" placeholder="Email Address" class="form-control">
+                <i class="zmdi zmdi-email"></i>
+            </div>
+            <div class="form-wrapper">
+                <input asp-for="Password" type="password" placeholder="Password" class="form-control">
+                <i class="zmdi zmdi-lock"></i>
+            </div>
+            <div class="form-group">
+                <button type="submit">
+                    Login
+                    <i class="zmdi zmdi-arrow-right"></i>
+                </button>
+            </div>
+
+            <br/>
+            <div class="footer">
+
+                <span>
+                    <a href="@Url.Action("Index", "SignUp")">Sign Up</a>
+                </span><span>Forgot Password?</span>
+            </div>
+        </form>
+    </div>
+</div>
 
 </body>
 </html>
