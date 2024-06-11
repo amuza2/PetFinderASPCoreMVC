@@ -16,9 +16,9 @@ namespace PetFinderASPCoreMVC.Controllers
             return View(petsWithUsers);
         }
 
-        public ActionResult Delete(int id)
+        public async Task<IActionResult> Delete(string id)
         {
-           
+            await _petService.DeletePetAsync(id);
             return RedirectToAction("Index");
         }
     }

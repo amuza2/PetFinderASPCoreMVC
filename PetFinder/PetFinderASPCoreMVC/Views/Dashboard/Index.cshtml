@@ -9,7 +9,11 @@
     
 </head>
 <body>
-    
+    <script>
+        function confirmDelete() {
+            return confirm("Are you sure you want to delete this pet?");
+        }
+    </script>
     <div class="app-container">
         <div class="sidebar">
             <div class="sidebar-header">
@@ -159,7 +163,8 @@
                             </span>
                         </div>
                         <div class="product-cell author"><span class="cell-label">Author:</span>@item.Publisher.FullName</div>
-                        <div class="product-cell author"><span class="cell-label">Author:</span><a href="@Url.Action("Delete", new { id = item.Pet.PetId })" class="btn btn-danger" style="color:white" onclick="return confirmDelete();">
+                        <div class="product-cell author">
+                            <span class="cell-label">Author:</span><a href="@Url.Action("Delete", new { id = item.Pet.PetId })" class="btn btn-danger" style="color:white" onclick="return confirmDelete();">
                     <i class="fas fa-trash-alt"></i>Delete
                 </a></div>
 
