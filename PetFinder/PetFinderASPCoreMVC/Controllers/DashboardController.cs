@@ -23,8 +23,8 @@ namespace PetFinderASPCoreMVC.Controllers
         }
         public async Task<IActionResult> TogglePetStatus(string id)
         {
-            await _petService.TogglePetStatus(id);
-            return RedirectToAction("Index");
+            var newStatus = await _petService.TogglePetStatus(id);
+            return Json(new { success = true, status = newStatus });
         }
     }
 }
