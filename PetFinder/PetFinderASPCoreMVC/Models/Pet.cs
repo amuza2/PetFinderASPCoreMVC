@@ -12,6 +12,6 @@
         public bool PetVaccinated { get; set; } = false;
         public string PetBreed { get; set; } = "not mentioned";
         public string PetCategory { get; set; } = "not mentioned";
-        public bool PetStatus { get; set; } = false;
+        public string PetStatus { get; set; } = "waiting";
     }
 }

@@ -47,6 +47,24 @@ namespace PetFinderASPCoreMVC.Services
         {
             await _firebaseClient.Child("Pets").Child(petId).DeleteAsync();
         }
-
+        public async Task TogglePetStatus(string petId)
+        {
+            var pets = await _firebaseClient.Child("Pets").OnceAsync<Pet>();
+            foreach (var pet in pets)
+            {
+                Pet petObj = pet.Object;
+                if(petObj.PetId == petId)
+                {
+                    if (petObj.PetStatus == "false")
+                        petObj.PetStatus = "true";
+                    else
+                        petObj.PetStatus = "false";
+                    
+                    await _firebaseClient.Child("Pets").Child(pet.Key).PutAsync(petObj);
+                    break;
+                }
+                
+            }
+        }
     }
 }

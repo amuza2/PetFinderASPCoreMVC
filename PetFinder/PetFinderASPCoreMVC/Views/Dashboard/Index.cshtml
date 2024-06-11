@@ -13,6 +13,25 @@
         function confirmDelete() {
             return confirm("Are you sure you want to delete this pet?");
         }
+        function toggleStatus(petId) {
+            $.ajax({
+                url: '@Url.Action("TogglePetStatus", "Dashboard")',
+                type: 'POST',
+                data: { id: petId },
+                success: function (result) {
+                    if (result.success) {
+                        var statusElement = $('#status-' + petId);
+                        var newStatus = result.status ? "Active" : "Disabled";
+                        statusElement.text(newStatus);
+                        statusElement.toggleClass('active', result.status);
+                        statusElement.toggleClass('disabled', !result.status);
+                    }
+                },
+                error: function () {
+                    alert('An error occurred while updating the pet status.');
+                }
+            });
+        }
     </script>
     <div class="app-container">
         <div class="sidebar">
@@ -158,9 +177,10 @@
                         <div class="product-cell category"><span class="cell-label">Category:</span>Dog</div>
                         <div class="product-cell status-cell">
                             <span class="cell-label">Status:</span>
-                            <span class="status @(item.Pet.PetStatus ? "active" : "disabled")">
-                                @(item.Pet.PetStatus ? "Active" : "Disabled")
+                            <span class="status @(item.Pet.PetStatus == "true" ? "active" : "disabled")">
+                                @(item.Pet.PetStatus == "true" ? "Active" : "Disabled")
                             </span>
+                            <button class="toggle-status-button" onclick="toggleStatus('@item.Pet.PetId')">Toggle</button>
                         </div>
                         <div class="product-cell author"><span class="cell-label">Author:</span>@item.Publisher.FullName</div>
                         <div class="product-cell author">
