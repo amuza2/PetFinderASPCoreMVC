@@ -21,5 +21,10 @@ namespace PetFinderASPCoreMVC.Controllers
             await _petService.DeletePetAsync(id);
             return RedirectToAction("Index");
         }
+        public async Task<IActionResult> TogglePetStatus(string id)
+        {
+            await _petService.TogglePetStatus(id);
+            return RedirectToAction("Index");
+        }
     }
 }
