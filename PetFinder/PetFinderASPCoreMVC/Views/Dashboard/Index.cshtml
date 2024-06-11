@@ -174,7 +174,7 @@
                             <img src="@item.Pet.PetImage" alt="Pet image">
                             <span>@item.Pet.PetName</span>
                         </div>
-                        <div class="product-cell category"><span class="cell-label">Category:</span>Dog</div>
+                        <div class="product-cell category"><span class="cell-label">Category:</span>@item.Pet.PetCategory</div>
                         <div class="product-cell status-cell">
                             <span class="cell-label">Status:</span>
                             <button id="status-@item.Pet.PetId" class="status @(item.Pet.PetStatus == "true" ? "active" : "disabled")" onclick="toggleStatus('@item.Pet.PetId')">
