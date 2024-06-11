@@ -15,5 +15,11 @@ namespace PetFinderASPCoreMVC.Controllers
             var petsWithUsers = await _petService.GetPetsWithUsersAsync();
             return View(petsWithUsers);
         }
+
+        public ActionResult Delete(int id)
+        {
+           
+            return RedirectToAction("Index");
+        }
     }
 }
