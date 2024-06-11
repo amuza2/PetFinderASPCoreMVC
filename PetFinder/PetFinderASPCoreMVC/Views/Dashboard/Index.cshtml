@@ -21,10 +21,10 @@
                 success: function (result) {
                     if (result.success) {
                         var statusElement = $('#status-' + petId);
-                        var newStatus = result.status ? "Active" : "Disabled";
+                        var newStatus = result.status ? "Active" : "Active";
                         statusElement.text(newStatus);
-                        statusElement.toggleClass('active', result.status);
-                        statusElement.toggleClass('disabled', !result.status);
+                        statusElement.toggleClass('active', result.status === "true");
+                        statusElement.toggleClass('disabled', result.status !== "true");
                     }
                 },
                 error: function () {
@@ -177,10 +177,9 @@
                         <div class="product-cell category"><span class="cell-label">Category:</span>Dog</div>
                         <div class="product-cell status-cell">
                             <span class="cell-label">Status:</span>
-                            <span class="status @(item.Pet.PetStatus == "true" ? "active" : "disabled")">
-                                @(item.Pet.PetStatus == "true" ? "Active" : "Disabled")
-                            </span>
-                            <button class="toggle-status-button" onclick="toggleStatus('@item.Pet.PetId')">Toggle</button>
+                            <button id="status-@item.Pet.PetId" class="status @(item.Pet.PetStatus == "true" ? "active" : "disabled")" onclick="toggleStatus('@item.Pet.PetId')">
+                                @(item.Pet.PetStatus == "true" ? "Active" : "Active")
+                            </button>
                         </div>
                         <div class="product-cell author"><span class="cell-label">Author:</span>@item.Publisher.FullName</div>
                         <div class="product-cell author">

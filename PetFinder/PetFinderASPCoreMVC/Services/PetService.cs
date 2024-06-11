@@ -47,7 +47,7 @@ namespace PetFinderASPCoreMVC.Services
         {
             await _firebaseClient.Child("Pets").Child(petId).DeleteAsync();
         }
-        public async Task TogglePetStatus(string petId)
+        public async Task<string> TogglePetStatus(string petId)
         {
             var pets = await _firebaseClient.Child("Pets").OnceAsync<Pet>();
             foreach (var pet in pets)
@@ -61,10 +61,10 @@ namespace PetFinderASPCoreMVC.Services
                         petObj.PetStatus = "false";
                     
                     await _firebaseClient.Child("Pets").Child(pet.Key).PutAsync(petObj);
-                    break;
+                    return petObj.PetStatus;
                 }
-                
             }
+            return "false";
         }
     }
 }
