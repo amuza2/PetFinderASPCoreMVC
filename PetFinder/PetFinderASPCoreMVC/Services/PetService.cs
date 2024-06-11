@@ -42,6 +42,11 @@ namespace PetFinderASPCoreMVC.Services
             }
             return petList;
         }
-        
+
+        public async Task DeletePetAsync(string petId)
+        {
+            await _firebaseClient.Child("Pets").Child(petId).DeleteAsync();
+        }
+
     }
 }
