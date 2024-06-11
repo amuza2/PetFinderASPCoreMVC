@@ -10,4 +10,8 @@
     <None Include="wwwroot\Images\ilust.png" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="FirebaseDatabase.net" Version="4.2.0" />
+  </ItemGroup>
+
 </Project>

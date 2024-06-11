@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@model List<PetFinderASPCoreMVC.Models.PetWithUserViewModel>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,7 +7,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
     <link rel="stylesheet" href="./css/DashboardStyle.css">
     
-
 </head>
 <body>
     
@@ -135,198 +135,27 @@
                     </div>
                     
                 </div>
+                @foreach (var item in Model)
+                {
                 <div class="products-row">
                     <button class="cell-more-button">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-vertical"><circle cx="12" cy="12" r="1" /><circle cx="12" cy="5" r="1" /><circle cx="12" cy="19" r="1" /></svg>
                     </button>
-                    <div class="product-cell image">
-                        <img src="https://images.unsplash.com/photo-1660658036977-807d4808ae54?q=80&w=1674&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="product">
-                        <span>Ocean</span>
-                    </div>
-                    <div class="product-cell category"><span class="cell-label">Category:</span>Dog</div>
-                    <div class="product-cell status-cell">
-                        <span class="cell-label">Status:</span>
-                        <span class="status active">Active</span>
-                    </div>
-                    <div class="product-cell author"><span class="cell-label">Author:</span>Med</div>
-            
+                    
+                        <div class="product-cell image">
+                            <img src="@item.Pet.PetImage" alt="Pet image">
+                            <span>@item.Pet.PetName</span>
+                        </div>
+                        <div class="product-cell category"><span class="cell-label">Category:</span>Dog</div>
+                        <div class="product-cell status-cell">
+                            <span class="cell-label">Status:</span>
+                            <span class="status @(item.Pet.PetStatus ? "active" : "disabled")">
+                                @(item.Pet.PetStatus ? "Active" : "Disabled")
+                            </span>
+                        </div>
+                        <div class="product-cell author"><span class="cell-label">Author:</span>@item.Publisher.FullName</div>     
                 </div>
-                <div class="products-row">
-                    <button class="cell-more-button">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-vertical"><circle cx="12" cy="12" r="1" /><circle cx="12" cy="5" r="1" /><circle cx="12" cy="19" r="1" /></svg>
-                    </button>
-                    <div class="product-cell image">
-                        <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?q=80&w=1686&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="product">
-                        <span>Lou</span>
-                    </div>
-                    <div class="product-cell category"><span class="cell-label">Category:</span>Cat</div>
-                    <div class="product-cell status-cell">
-                        <span class="cell-label">Status:</span>
-                        <span class="status disabled">Disabled</span>
-                    </div>
-                    <div class="product-cell author"><span class="cell-label">Author:</span>Raouf</div>
-                   
-                </div>
-                <div class="products-row">
-                    <button class="cell-more-button">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-vertical"><circle cx="12" cy="12" r="1" /><circle cx="12" cy="5" r="1" /><circle cx="12" cy="19" r="1" /></svg>
-                    </button>
-                    <div class="product-cell image">
-                        <img src="https://images.unsplash.com/photo-1585110396000-c9ffd4e4b308?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="product">
-                        <span>Yellow</span>
-                    </div>
-                    <div class="product-cell category"><span class="cell-label">Category:</span>Rabbit</div>
-                    <div class="product-cell status-cell">
-                        <span class="cell-label">Status:</span>
-                        <span class="status active">Active</span>
-                    </div>
-                    <div class="product-cell author"><span class="cell-label">Author:</span>Abdel Ilah</div>
-                   
-                </div>
-                <div class="products-row">
-                    <button class="cell-more-button">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-vertical"><circle cx="12" cy="12" r="1" /><circle cx="12" cy="5" r="1" /><circle cx="12" cy="19" r="1" /></svg>
-                    </button>
-                    <div class="product-cell image">
-                        <img src="https://images.unsplash.com/photo-1585696862208-ca12defa3a78?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="product">
-                        <span>Dreamy</span>
-                    </div>
-                    <div class="product-cell category"><span class="cell-label">Category:</span>Turtle</div>
-                    <div class="product-cell status-cell">
-                        <span class="cell-label">Status:</span>
-                        <span class="status disabled">Disabled</span>
-                    </div>
-                    <div class="product-cell author"><span class="cell-label">Author:</span>Med</div>
-                   
-                </div>
-                <div class="products-row">
-                    <button class="cell-more-button">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-vertical"><circle cx="12" cy="12" r="1" /><circle cx="12" cy="5" r="1" /><circle cx="12" cy="19" r="1" /></svg>
-                    </button>
-                    <div class="product-cell image">
-                        <img src="https://images.unsplash.com/photo-1530281700549-e82e7bf110d6?q=80&w=1888&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="product">
-                        <span>Boheme</span>
-                    </div>
-                    <div class="product-cell category"><span class="cell-label">Category:</span>Dog</div>
-                    <div class="product-cell status-cell">
-                        <span class="cell-label">Status:</span>
-                        <span class="status active">Active</span>
-                    </div>
-                    <div class="product-cell author"><span class="cell-label">Author:</span>Raouf</div>
-                  
-                </div>
-                <div class="products-row">
-                    <button class="cell-more-button">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-vertical"><circle cx="12" cy="12" r="1" /><circle cx="12" cy="5" r="1" /><circle cx="12" cy="19" r="1" /></svg>
-                    </button>
-                    <div class="product-cell image">
-                        <img src="https://images.unsplash.com/photo-1533738363-b7f9aef128ce?q=80&w=1635&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="product">
-                        <span>Sky</span>
-                    </div>
-                    <div class="product-cell category"><span class="cell-label">Category:</span>Cat</div>
-                    <div class="product-cell status-cell">
-                        <span class="cell-label">Status:</span>
-                        <span class="status disabled">Disabled</span>
-                    </div>
-                    <div class="product-cell author"><span class="cell-label">Author:</span>Abdel Ilah</div>
-                   
-                </div>
-                <div class="products-row">
-                    <button class="cell-more-button">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-vertical"><circle cx="12" cy="12" r="1" /><circle cx="12" cy="5" r="1" /><circle cx="12" cy="19" r="1" /></svg>
-                    </button>
-                    <div class="product-cell image">
-                        <img src="https://images.unsplash.com/photo-1581872454565-822dac9367aa?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="product">
-                        <span>Midnight</span>
-                    </div>
-                    <div class="product-cell category"><span class="cell-label">Category:</span>Rabbit</div>
-                    <div class="product-cell status-cell">
-                        <span class="cell-label">Status:</span>
-                        <span class="status active">Active</span>
-                    </div>
-                    <div class="product-cell author"><span class="cell-label">Author:</span>Med</div>
-                   
-                </div>
-                <div class="products-row">
-                    <button class="cell-more-button">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-vertical"><circle cx="12" cy="12" r="1" /><circle cx="12" cy="5" r="1" /><circle cx="12" cy="19" r="1" /></svg>
-                    </button>
-                    <div class="product-cell image">
-                        <img src="https://images.unsplash.com/photo-1517849845537-4d257902454a?q=80&w=1635&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="product">
-                        <span>Boheme</span>
-                    </div>
-                    <div class="product-cell category"><span class="cell-label">Category:</span>Dog</div>
-                    <div class="product-cell status-cell">
-                        <span class="cell-label">Status:</span>
-                        <span class="status active">Active</span>
-                    </div>
-                    <div class="product-cell author"><span class="cell-label">Author:</span>Abdel Ilah</div>
-                  
-                </div>
-                <div class="products-row">
-                    <button class="cell-more-button">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-vertical"><circle cx="12" cy="12" r="1" /><circle cx="12" cy="5" r="1" /><circle cx="12" cy="19" r="1" /></svg>
-                    </button>
-                    <div class="product-cell image">
-                        <img src="https://images.unsplash.com/photo-1597776941486-054bf5529210?q=80&w=1698&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="product">
-                        <span>Palm</span>
-                    </div>
-                    <div class="product-cell category"><span class="cell-label">Category:</span>Turtle</div>
-                    <div class="product-cell status-cell">
-                        <span class="cell-label">Status:</span>
-                        <span class="status active">Active</span>
-                    </div>
-                    <div class="product-cell author"><span class="cell-label">Author:</span>Med</div>
-                  
-                </div>
-                <div class="products-row">
-                    <button class="cell-more-button">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-vertical"><circle cx="12" cy="12" r="1" /><circle cx="12" cy="5" r="1" /><circle cx="12" cy="19" r="1" /></svg>
-                    </button>
-                    <div class="product-cell image">
-                        <img src="https://images.unsplash.com/photo-1465153690352-10c1b29577f8?q=80&w=1615&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="product">
-                        <span>Forest</span>
-                    </div>
-                    <div class="product-cell category"><span class="cell-label">Category:</span>Duck</div>
-                    <div class="product-cell status-cell">
-                        <span class="cell-label">Status:</span>
-                        <span class="status active">Active</span>
-                    </div>
-                    <div class="product-cell author"><span class="cell-label">Author:</span>Raouf</div>
-                   
-                </div>
-                <div class="products-row">
-                    <button class="cell-more-button">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-vertical"><circle cx="12" cy="12" r="1" /><circle cx="12" cy="5" r="1" /><circle cx="12" cy="19" r="1" /></svg>
-                    </button>
-                    <div class="product-cell image">
-                        <img src="https://images.unsplash.com/photo-1561037404-61cd46aa615b?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="product">
-                        <span>Sand</span>
-                    </div>
-                    <div class="product-cell category"><span class="cell-label">Category:</span>Dog</div>
-                    <div class="product-cell status-cell">
-                        <span class="cell-label">Status:</span>
-                        <span class="status disabled">Disabled</span>
-                    </div>
-                    <div class="product-cell author"><span class="cell-label">Author:</span>Adam</div>
-                  
-                </div>
-                <div class="products-row">
-                    <button class="cell-more-button">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-vertical"><circle cx="12" cy="12" r="1" /><circle cx="12" cy="5" r="1" /><circle cx="12" cy="19" r="1" /></svg>
-                    </button>
-                    <div class="product-cell image">
-                        <img src="https://images.unsplash.com/photo-1561948955-570b270e7c36?q=80&w=1801&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="product">
-                        <span>Autumn</span>
-                    </div>
-                    <div class="product-cell category"><span class="cell-label">Category:</span>Cat</div>
-                    <div class="product-cell status-cell">
-                        <span class="cell-label">Status:</span>
-                        <span class="status active">Active</span>
-                    </div>
-                    <div class="product-cell author"><span class="cell-label">Author:</span>3amri</div>
-                   
-                </div>
+                    }
             </div>
         </div>
     </div>
