@@ -11,6 +11,7 @@
 <body>
     @if(!(ViewContext.RouteData.Values["controller"].ToString() == "Login" ||
     ViewContext.RouteData.Values["controller"].ToString() == "Dashboard" ||
+    ViewContext.RouteData.Values["controller"].ToString() == "Users" ||
     ViewContext.RouteData.Values["controller"].ToString() == "SignUp" &&
     ViewContext.RouteData.Values["action"].ToString() == "Index"))
     {

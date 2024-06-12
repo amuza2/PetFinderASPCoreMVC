@@ -9,6 +9,6 @@
         public string? PhoneNumber { get; set; }
         public string? Address { get; set; }
         public string? Gender { get; set; }
-        public bool? UserType { get; set; }
+        public string? UserType { get; set; }
     }
 }

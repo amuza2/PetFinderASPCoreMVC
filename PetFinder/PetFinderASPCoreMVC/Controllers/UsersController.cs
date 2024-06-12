@@ -13,8 +13,8 @@ namespace PetFinderASPCoreMVC.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            var petsWithUsers = await _userService.GetUsers();
-            return View(petsWithUsers);
+            var Users = await _userService.GetUsers();
+            return View(Users);
         }
         public async Task<IActionResult> Delete(string id)
         {
