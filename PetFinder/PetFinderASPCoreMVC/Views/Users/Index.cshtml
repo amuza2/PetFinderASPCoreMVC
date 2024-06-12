@@ -1,36 +1,17 @@
-﻿@model List<PetFinderASPCoreMVC.Models.PetWithUserViewModel>
+﻿@model List<PetFinderASPCoreMVC.Models.UsersViewModel>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Pet Finder - Dashboard</title>
+    <title>Pet Finder - Users</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
     <link rel="stylesheet" href="./css/DashboardStyle.css">
-    
+
 </head>
 <body>
     <script>
         function confirmDelete() {
             return confirm("Are you sure you want to delete this pet?");
-        }
-        function toggleStatus(petId) {
-            $.ajax({
-                url: '@Url.Action("TogglePetStatus", "Dashboard")',
-                type: 'POST',
-                data: { id: petId },
-                success: function (result) {
-                    if (result.success) {
-                        var statusElement = $('#status-' + petId);
-                        var newStatus = result.status ? "Active" : "Active";
-                        statusElement.text(newStatus);
-                        statusElement.toggleClass('active', result.status === "true");
-                        statusElement.toggleClass('disabled', result.status !== "true");
-                    }
-                },
-                error: function () {
-                    alert('An error occurred while updating the pet status.');
-                }
-            });
         }
     </script>
     <div class="app-container">
@@ -48,7 +29,7 @@
                     </a>
                 </li>
                 <li class="sidebar-list-item active">
-                    <a href="#">
+                    <a href="@Url.Action("Index", "Dashboard")">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shopping-bag"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" /><line x1="3" y1="6" x2="21" y2="6" /><path d="M16 10a4 4 0 0 1-8 0" /></svg>
                         <span>Posts</span>
                     </a>
@@ -91,40 +72,11 @@
                         <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
                     </svg>
                 </button>
-                
+
             </div>
             <div class="app-content-actions">
                 <input class="search-bar" placeholder="Search..." type="text">
                 <div class="app-content-actions-wrapper">
-                    <div class="filter-button-wrapper">
-                        <button class="action-button filter jsFilter"><span>Filter</span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-filter"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3" /></svg></button>
-                        <div class="filter-menu">
-                            <label>Category</label>
-                            <select>
-                                <option>All Categories</option>
-                                <option>Dog</option>
-                                <option>Cat</option>
-                                <option>Rabit</option>
-                                <option>Turtle</option>
-                                <option>Duck</option>
-                                <option>Other</option>
-                            </select>
-                            <label>Status</label>
-                            <select>
-                                <option>All Status</option>
-                                <option>Active</option>
-                                <option>Disabled</option>
-                            </select>
-                            <div class="filter-menu-buttons">
-                                <button class="filter-button reset">
-                                    Reset
-                                </button>
-                                <button class="filter-button apply">
-                                    Apply
-                                </button>
-                            </div>
-                        </div>
-                    </div>
                     <button class="action-button list active" title="List View">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-list"><line x1="8" y1="6" x2="21" y2="6" /><line x1="8" y1="12" x2="21" y2="12" /><line x1="8" y1="18" x2="21" y2="18" /><line x1="3" y1="6" x2="3.01" y2="6" /><line x1="3" y1="12" x2="3.01" y2="12" /><line x1="3" y1="18" x2="3.01" y2="18" /></svg>
                     </button>
@@ -135,24 +87,18 @@
             </div>
             <div class="products-area-wrapper tableView">
                 <div class="products-header">
-                    <div class="product-cell image">
-                        Items
-                        <button class="sort-button">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 512 512"><path fill="currentColor" d="M496.1 138.3L375.7 17.9c-7.9-7.9-20.6-7.9-28.5 0L226.9 138.3c-7.9 7.9-7.9 20.6 0 28.5 7.9 7.9 20.6 7.9 28.5 0l85.7-85.7v352.8c0 11.3 9.1 20.4 20.4 20.4 11.3 0 20.4-9.1 20.4-20.4V81.1l85.7 85.7c7.9 7.9 20.6 7.9 28.5 0 7.9-7.8 7.9-20.6 0-28.5zM287.1 347.2c-7.9-7.9-20.6-7.9-28.5 0l-85.7 85.7V80.1c0-11.3-9.1-20.4-20.4-20.4-11.3 0-20.4 9.1-20.4 20.4v352.8l-85.7-85.7c-7.9-7.9-20.6-7.9-28.5 0-7.9 7.9-7.9 20.6 0 28.5l120.4 120.4c7.9 7.9 20.6 7.9 28.5 0l120.4-120.4c7.8-7.9 7.8-20.7-.1-28.5z" /></svg>
-                        </button>
-                    </div>
                     <div class="product-cell category">
-                        Animal<button class="sort-button">
+                        Username<button class="sort-button">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 512 512"><path fill="currentColor" d="M496.1 138.3L375.7 17.9c-7.9-7.9-20.6-7.9-28.5 0L226.9 138.3c-7.9 7.9-7.9 20.6 0 28.5 7.9 7.9 20.6 7.9 28.5 0l85.7-85.7v352.8c0 11.3 9.1 20.4 20.4 20.4 11.3 0 20.4-9.1 20.4-20.4V81.1l85.7 85.7c7.9 7.9 20.6 7.9 28.5 0 7.9-7.8 7.9-20.6 0-28.5zM287.1 347.2c-7.9-7.9-20.6-7.9-28.5 0l-85.7 85.7V80.1c0-11.3-9.1-20.4-20.4-20.4-11.3 0-20.4 9.1-20.4 20.4v352.8l-85.7-85.7c-7.9-7.9-20.6-7.9-28.5 0-7.9 7.9-7.9 20.6 0 28.5l120.4 120.4c7.9 7.9 20.6 7.9 28.5 0l120.4-120.4c7.8-7.9 7.8-20.7-.1-28.5z" /></svg>
                         </button>
                     </div>
                     <div class="product-cell status-cell">
-                        Status<button class="sort-button">
+                        Gender<button class="sort-button">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 512 512"><path fill="currentColor" d="M496.1 138.3L375.7 17.9c-7.9-7.9-20.6-7.9-28.5 0L226.9 138.3c-7.9 7.9-7.9 20.6 0 28.5 7.9 7.9 20.6 7.9 28.5 0l85.7-85.7v352.8c0 11.3 9.1 20.4 20.4 20.4 11.3 0 20.4-9.1 20.4-20.4V81.1l85.7 85.7c7.9 7.9 20.6 7.9 28.5 0 7.9-7.8 7.9-20.6 0-28.5zM287.1 347.2c-7.9-7.9-20.6-7.9-28.5 0l-85.7 85.7V80.1c0-11.3-9.1-20.4-20.4-20.4-11.3 0-20.4 9.1-20.4 20.4v352.8l-85.7-85.7c-7.9-7.9-20.6-7.9-28.5 0-7.9 7.9-7.9 20.6 0 28.5l120.4 120.4c7.9 7.9 20.6 7.9 28.5 0l120.4-120.4c7.8-7.9 7.8-20.7-.1-28.5z" /></svg>
                         </button>
                     </div>
                     <div class="product-cell author">
-                        Author<button class="sort-button">
+                        Email<button class="sort-button">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 512 512"><path fill="currentColor" d="M496.1 138.3L375.7 17.9c-7.9-7.9-20.6-7.9-28.5 0L226.9 138.3c-7.9 7.9-7.9 20.6 0 28.5 7.9 7.9 20.6 7.9 28.5 0l85.7-85.7v352.8c0 11.3 9.1 20.4 20.4 20.4 11.3 0 20.4-9.1 20.4-20.4V81.1l85.7 85.7c7.9 7.9 20.6 7.9 28.5 0 7.9-7.8 7.9-20.6 0-28.5zM287.1 347.2c-7.9-7.9-20.6-7.9-28.5 0l-85.7 85.7V80.1c0-11.3-9.1-20.4-20.4-20.4-11.3 0-20.4 9.1-20.4 20.4v352.8l-85.7-85.7c-7.9-7.9-20.6-7.9-28.5 0-7.9 7.9-7.9 20.6 0 28.5l120.4 120.4c7.9 7.9 20.6 7.9 28.5 0l120.4-120.4c7.8-7.9 7.8-20.7-.1-28.5z" /></svg>
                         </button>
                     </div>
@@ -161,34 +107,25 @@
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 512 512"><path fill="currentColor" d="M496.1 138.3L375.7 17.9c-7.9-7.9-20.6-7.9-28.5 0L226.9 138.3c-7.9 7.9-7.9 20.6 0 28.5 7.9 7.9 20.6 7.9 28.5 0l85.7-85.7v352.8c0 11.3 9.1 20.4 20.4 20.4 11.3 0 20.4-9.1 20.4-20.4V81.1l85.7 85.7c7.9 7.9 20.6 7.9 28.5 0 7.9-7.8 7.9-20.6 0-28.5zM287.1 347.2c-7.9-7.9-20.6-7.9-28.5 0l-85.7 85.7V80.1c0-11.3-9.1-20.4-20.4-20.4-11.3 0-20.4 9.1-20.4 20.4v352.8l-85.7-85.7c-7.9-7.9-20.6-7.9-28.5 0-7.9 7.9-7.9 20.6 0 28.5l120.4 120.4c7.9 7.9 20.6 7.9 28.5 0l120.4-120.4c7.8-7.9 7.8-20.7-.1-28.5z" /></svg>
                         </button>
                     </div>
-                    
+
                 </div>
                 @foreach (var item in Model)
                 {
                 <div class="products-row">
-                    <button class="cell-more-button">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-vertical"><circle cx="12" cy="12" r="1" /><circle cx="12" cy="5" r="1" /><circle cx="12" cy="19" r="1" /></svg>
-                    </button>
-                    
-                        <div class="product-cell image">
-                            <img src="@item.Pet.PetImage" alt="Pet image">
-                            <span>@item.Pet.PetName</span>
-                        </div>
-                        <div class="product-cell category"><span class="cell-label">Category:</span>@item.Pet.PetCategory</div>
-                        <div class="product-cell status-cell">
-                            <span class="cell-label">Status:</span>
-                            <button id="status-@item.Pet.PetId" class="status @(item.Pet.PetStatus == "true" ? "active" : "disabled")" onclick="toggleStatus('@item.Pet.PetId')">
-                                @(item.Pet.PetStatus == "true" ? "Active" : "Active")
-                            </button>
-                        </div>
-                        <div class="product-cell author"><span class="cell-label">Author:</span>@item.Publisher.FullName</div>
+                <button class="cell-more-button">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-vertical"><circle cx="12" cy="12" r="1" /><circle cx="12" cy="5" r="1" /><circle cx="12" cy="19" r="1" /></svg>
+                </button>
+
+                <div class="product-cell category"><span class="cell-label">Full name:</span>@item.Publisher.FullName</div>
+                <div class="product-cell status-cell"><span class="cell-label">Gender:</span>@item.Publisher.Gender</div>
+                <div class="product-cell author"><span class="cell-label">Email:</span>@item.Publisher.Email</div>
                         <div class="product-cell author">
-                            <span class="cell-label">Author:</span><a href="@Url.Action("Delete", new { id = item.Pet.PetId })" class="btn btn-danger" style="color:white" onclick="return confirmDelete();">
-                    <i class="fas fa-trash-alt"></i>Delete
-                </a></div>
+                            <span class="cell-label">Author:</span><a href="@Url.Action("Delete", new { id = item.Publisher.UserId })" class="btn btn-danger" style="color:white" onclick="return confirmDelete();">
+                                <i class="fas fa-trash-alt"></i>Delete</a>
+                        </div>
 
                 </div>
-                    }
+                }
             </div>
         </div>
     </div>

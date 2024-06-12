@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PetFinderASPCoreMVC.Services;
+using PetFinderASPCoreMVC.Utils;
 
 namespace PetFinderASPCoreMVC.Controllers
 {
@@ -8,7 +9,7 @@ namespace PetFinderASPCoreMVC.Controllers
         private readonly PetService _petService;
         public DashboardController()
         {
-            _petService = new PetService("https://petfinderplatform-894-default-rtdb.firebaseio.com");
+            _petService = new PetService(Configs.FirebaseDbUrl);
         }
         public async Task<IActionResult> Index()
         {
