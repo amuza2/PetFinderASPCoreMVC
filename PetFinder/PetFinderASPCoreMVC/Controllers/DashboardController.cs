@@ -1,11 +1,17 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PetFinderASPCoreMVC.Services;
+
+using ServiceReference1;
+using System.Data.SqlTypes;
+
 using PetFinderASPCoreMVC.Utils;
 
 namespace PetFinderASPCoreMVC.Controllers
 {
     public class DashboardController : Controller
     {
+        public DateTime services;
+        public WebServiceSoapClient service;
         private readonly PetService _petService;
         public DashboardController()
         {
@@ -13,6 +19,7 @@ namespace PetFinderASPCoreMVC.Controllers
         }
         public async Task<IActionResult> Index()
         {
+            ViewBag.services = DateTime.Now;
             var petsWithUsers = await _petService.GetPetsWithUsersAsync();
             return View(petsWithUsers);
         }
