@@ -1,8 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PetFinderASPCoreMVC.Services;
+
 using ServiceReference1;
 using System.Data.SqlTypes;
 
+using PetFinderASPCoreMVC.Utils;
 
 namespace PetFinderASPCoreMVC.Controllers
 {
@@ -13,7 +15,7 @@ namespace PetFinderASPCoreMVC.Controllers
         private readonly PetService _petService;
         public DashboardController()
         {
-            _petService = new PetService("https://petfinderplatform-894-default-rtdb.firebaseio.com");
+            _petService = new PetService(Configs.FirebaseDbUrl);
         }
         public async Task<IActionResult> Index()
         {
@@ -29,8 +31,8 @@ namespace PetFinderASPCoreMVC.Controllers
         }
         public async Task<IActionResult> TogglePetStatus(string id)
         {
-            await _petService.TogglePetStatus(id);
-            return RedirectToAction("Index");
+            var newStatus = await _petService.TogglePetStatus(id);
+            return Json(new { success = true, status = newStatus });
         }
     }
 }

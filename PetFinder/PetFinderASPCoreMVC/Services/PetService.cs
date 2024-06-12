@@ -10,9 +10,9 @@ namespace PetFinderASPCoreMVC.Services
         {
             _firebaseClient = new FirebaseClient(firebaseDbUrl);
         }
-        public async Task<User> GetUserByPublisherId(string key, string publisherId)
+        public async Task<User> GetUserByPublisherId(string publisherId)
         {
-            var user = await _firebaseClient.Child("Users").Child(key).Child(publisherId).OnceSingleAsync<User>();
+            var user = await _firebaseClient.Child("Users").Child(publisherId).OnceSingleAsync<User>();
             return user;
         }
         public async Task<List<PetWithUserViewModel>> GetPetsWithUsersAsync()
@@ -23,17 +23,19 @@ namespace PetFinderASPCoreMVC.Services
             foreach (var pet in pets)
             {
                 var petObject = pet.Object;
-                var petkey = pet.Key;
-                petObject.PublisherId = pet.Object.PublisherId;
+                var petKey = pet.Key;
+                petObject.PetId = petKey;
+                Console.WriteLine($"Pet ID: {petObject.PetId}, Publisher ID: {petObject.PublisherId}");
                 User user = null;
                 if (!string.IsNullOrEmpty(petObject.PublisherId))
                 {
-                    user = await GetUserByPublisherId(petkey, petObject.PublisherId);
+                    user = await GetUserByPublisherId(petObject.PublisherId);
                 }
                 if(user == null)
                 {
                     user = new User { FullName = "Unknown", Username= "User" };
                 }
+                Console.WriteLine($"User Full Name: {user.FullName}, Username: {user.Username}");
                 petList.Add(new PetWithUserViewModel
                 {
                     Pet = petObject,
@@ -42,12 +44,13 @@ namespace PetFinderASPCoreMVC.Services
             }
             return petList;
         }
-
+        // delete pet
         public async Task DeletePetAsync(string petId)
         {
             await _firebaseClient.Child("Pets").Child(petId).DeleteAsync();
         }
-        public async Task TogglePetStatus(string petId)
+        // status toggle button
+        public async Task<string> TogglePetStatus(string petId)
         {
             var pets = await _firebaseClient.Child("Pets").OnceAsync<Pet>();
             foreach (var pet in pets)
@@ -61,10 +64,10 @@ namespace PetFinderASPCoreMVC.Services
                         petObj.PetStatus = "false";
                     
                     await _firebaseClient.Child("Pets").Child(pet.Key).PutAsync(petObj);
-                    break;
+                    return petObj.PetStatus;
                 }
-                
             }
+            return "false";
         }
     }
 }
