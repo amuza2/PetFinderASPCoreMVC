@@ -8,23 +8,22 @@ EndProject
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "WebSiteService", "WebSiteService\", "{3721F629-E62F-4DC0-A784-AF6F2C99B0AE}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.8.1"
-		Debug.AspNetCompiler.VirtualPath = "/localhost_61968"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_8230"
 		Debug.AspNetCompiler.PhysicalPath = "WebSiteService\"
-		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_61968\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_8230\"
 		Debug.AspNetCompiler.Updateable = "true"
 		Debug.AspNetCompiler.ForceOverwrite = "true"
 		Debug.AspNetCompiler.FixedNames = "false"
 		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.VirtualPath = "/localhost_61968"
+		Release.AspNetCompiler.VirtualPath = "/localhost_8230"
 		Release.AspNetCompiler.PhysicalPath = "WebSiteService\"
-		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_61968\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_8230\"
 		Release.AspNetCompiler.Updateable = "true"
 		Release.AspNetCompiler.ForceOverwrite = "true"
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
-		VWDPort = "61968"
+		VWDPort = "8230"
 		SlnRelativePath = "WebSiteService\"
-		DefaultWebSiteLanguage = "Visual C#"
 	EndProjectSection
 EndProject
 Global
